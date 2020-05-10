@@ -56,5 +56,7 @@ public class Account {
 			return false;
 		return true;
 	}
+	
+	//TODO du musst auch die hashCode Methode implementieren
 
 }

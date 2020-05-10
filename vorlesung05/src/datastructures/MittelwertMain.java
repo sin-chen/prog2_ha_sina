@@ -9,6 +9,7 @@ public class MittelwertMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		//TODO nimm hier eine LinkedList
 		ArrayList<Mittelwert> mittelwert = new ArrayList<>();
 		double summe = 0;
 

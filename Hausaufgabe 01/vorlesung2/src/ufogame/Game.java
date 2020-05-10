@@ -3,14 +3,17 @@ package ufogame;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
+//TODO die beiden imports brauchst du nicht
+import java.util.concurrent.TimeUnit;
 import javax.management.timer.Timer;
 
 import view.GameFrameWork;
 import view.IKeyboardListener;
 import view.ITickableListener;
 
+//TODO diesen imports brauchst du nicht
+//TODO nutze strg + shift + o = organize imports
 import view.Rectangle;
 import view.Message;
 
@@ -27,9 +30,12 @@ public class Game implements ITickableListener, IKeyboardListener
 	private int screenHeight = 700;
 	private GameFrameWork frameWork = new GameFrameWork();
 	
+	//TODO du brauchst keinen Timer
 	Timer timer = new Timer();
 	
 	private int score;
+	
+	//TODO mach die instanzvariablen private
 	Message message = new Message("score: " + 0 ,700,60,30, new Color(0,255,0));
 	
 	Message message2 = new Message("Besiege 20 Ufos! " ,250,60,30, new Color(0,0,255));
@@ -44,14 +50,15 @@ public class Game implements ITickableListener, IKeyboardListener
 		frameWork.addMessage(message);
 		frameWork.addMessage(message2);
 		frameWork.setSize(900, 700);
-		frameWork.setBackground(new Background("D:\\bilder\\space.png"));
+		//TODO verwende keine absoluten Pfade, ich habe die Pfade mal angepasst, so dass sie bei mir passen
+		frameWork.setBackground(new Background("Hausaufgabe 01\\vorlesung2\\src\\assets\\space.png"));
 		frameWork.setBackgroundColor(new Color(0, 0, 0));
 		
 		
-		ship = new Ship((screenWidth / 2) - 30, 4 * screenHeight / 5, screenWidth/20, screenWidth/20, "D:\\bilder\\spaceship.png");
+		ship = new Ship((screenWidth / 2) - 30, 4 * screenHeight / 5, screenWidth/20, screenWidth/20, "Hausaufgabe 01\\vorlesung2\\src\\assets\\spaceship.png");
 		frameWork.addGameObject(ship);
 		
-		Ufo ufo = new Ufo(-20, screenHeight/5, screenWidth/10, screenWidth/10, 10, "D:\\bilder\\ufo.png");
+		Ufo ufo = new Ufo(-20, screenHeight/5, screenWidth/10, screenWidth/10, 10, "Hausaufgabe 01\\vorlesung2\\src\\assets\\ufo.png");
 		ufos.add(ufo);
 		frameWork.addGameObject(ufo);
 		
@@ -70,7 +77,7 @@ public class Game implements ITickableListener, IKeyboardListener
 	public void shoot()
 	{
 		
-		Projectile projectile = new Projectile(ship.getX()+11, ship.getY()+5, ship.getWidth()/2, ship.getWidth()/2, 20, "D:\\bilder\\projectile.png");
+		Projectile projectile = new Projectile(ship.getX()+11, ship.getY()+5, ship.getWidth()/2, ship.getWidth()/2, 20, "Hausaufgabe 01\\vorlesung2\\src\\assets\\projectile.png");
 		projectiles.add(projectile);
 		frameWork.addGameObject(projectile);
 		
@@ -96,8 +103,14 @@ public class Game implements ITickableListener, IKeyboardListener
 
 	        }
 		    
+		    //TODO verwende keine "magic numbers", erstelle eine Variable oder Konstante für die 5
 		    if(shots==5) {
 		    	message3.setMessage("");
+		    	//TODO du brauchst hier keine for schleife, du greifst immer auf das Element 0 zu. Wenn du das Element entfernen möchtest, willst du des auch aus der ArrayListe entfernen.
+		    	//TODO also:
+//	    		frameWork.removeGameObject(projectiles.get(0));
+//	    		projectiles.remove(0);
+	    		
 		    	for(Projectile p: projectiles) {
 		    		frameWork.removeGameObject(projectiles.get(0));
 		    		
@@ -109,7 +122,7 @@ public class Game implements ITickableListener, IKeyboardListener
 		 
 		  		
 		/*if(ufos.size() == 0 ) {
-			  Ufo ufo = new Ufo(-20, screenHeight/5, screenWidth/10, screenWidth/10, 10, "D:\\bilder\\ufo.png");
+			  Ufo ufo = new Ufo(-20, screenHeight/5, screenWidth/10, screenWidth/10, 10, "Hausaufgabe 01\\vorlesung2\\src\\assets\\ufo.png");
 			  ufos.add(ufo);
 			  frameWork.addGameObject(ufo);
 		}*/
@@ -119,6 +132,9 @@ public class Game implements ITickableListener, IKeyboardListener
 			ufos.remove(0);
             ufos.add(new Ufo(ufos.get(ufos.size() - 1).getX() - 400, ufos.get(0).getY(), ufos.get(0).getWidth(), 
                     ufos.get(0).getHeight(), ufos.get(0).getSpeed(), ufos.get(0).getImagePath()));
+            //TODO du fügst ufo zur Liste hinzu, die werden aber nicht angezeigt.
+//			frameWork.addGameObject(ufos.get(ufos.size()-1));
+            
 		}
 		
 		for(Projectile p: projectiles) {
@@ -169,6 +185,7 @@ public class Game implements ITickableListener, IKeyboardListener
 	public boolean isCollided() {
 		for(Ufo ufo: ufos) {
 			for(Projectile p: projectiles) {
+				//TODO wenn die rechte kante des Projektils das ufo trifft und die linke kante aber nicht, wird die kollision nicht erkannt.
 				if((p.getX() > ufo.getX() && p.getX() < (ufo.getWidth() + ufo.getX()) && ((p.getY() > ufo.getY()) && (p.getY() < (ufo.getHeight() + ufo.getY()))))) {
 					
 					frameWork.removeGameObject(ufo);
@@ -186,6 +203,7 @@ public class Game implements ITickableListener, IKeyboardListener
 }
 	
 	public boolean sieg() {
+		//TODO verwende keine magic numbers. Siehe oben.
 		if(score >= 20) {
 			return true;
 		} return false;

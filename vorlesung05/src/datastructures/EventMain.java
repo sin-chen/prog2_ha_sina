@@ -9,6 +9,7 @@ public class EventMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//TODO super! Du bist bisher die einzige, die das so cool auf die diese Weise gelöst hat :)
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 		HashSet<Event> events = new HashSet<Event>();

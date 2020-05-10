@@ -24,7 +24,9 @@ public class AccountMain {
 		Scanner scan = new Scanner(System.in);
 		
 		try {
-
+			//TODO wenn du z.B. Birte mit 99999 noch mal anlegen willst, funktioniert das. Das sollte es aber nicht. 
+			//TODO es wird der hashcode des Objekts geprüft und wenn du die hashCode Methode nicht überschreibst, 
+			//dann nimmt er die einzigartige Objektreferenz als hashCode
 			Account acc5 = new Account(scan.nextLine(),scan.nextInt());
 			accounts.add(acc5);
 			
@@ -38,7 +40,7 @@ public class AccountMain {
 			System.out.println("Nummer: " + a.getPhoneNumber() + "\n");
 		}
 		
-
+		//TODO schliess den scanner
 	}
 
 }

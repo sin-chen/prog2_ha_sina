@@ -43,6 +43,7 @@ public class Hausaufgabe {
 				Contact bla = (Contact) obj;
 				System.out.println(bla.getName() + "" + bla.getPhoneNumber());
 			}
+			//TODO bitte schliesse alle Reader
 		} catch(Exception e) {
 			e.printStackTrace();
 			

@@ -1,5 +1,6 @@
 package datastructures;
 
+//TODO schreib Klassennamen groﬂ, diese Klasse brauchst du aber in diesem Fall nicht
 public class shoppingList {
 	
 	private String article;
