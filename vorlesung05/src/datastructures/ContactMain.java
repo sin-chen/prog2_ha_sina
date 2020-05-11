@@ -13,13 +13,9 @@ public class ContactMain {
 
 		contacts.add(new Contact("Herbert", 12494));
 		contacts.add(new Contact("DonDonDon", 333));
-		contacts.add(new Contact("Anja", 696969));
-		contacts.add(new Contact("SexieJessie", 666666));
 		contacts.add(new Contact("Tack", 6));
 		contacts.add(new Contact("Tack", 1));
 
-		//TODO Dieser Name ist aus guten Gründen in meiner Vorlesung und in allen Aufgaben ein Nogo! Danke!
-		contacts.add(new Contact("Hitler", 666));
 
 
 		Collections.sort(contacts);
